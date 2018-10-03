@@ -5,6 +5,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage[brazil]{babel}
 \usepackage{rotating}
+\usepackage{type1ec}
+
 %  \usepackage{subfigure}
 \usepackage{chngcntr}
 % \usepackage{subcaption}
@@ -17,6 +19,8 @@
 %\usepackage{color}
 %\usepackage[usenames,dvipsnames, table]{xcolor}
 \usepackage{listings}
+\usepackage{setspace}
+
 % \usepackage{caption}   
 % \captionsetup[figure]{labelsep=endash,labelfont=bf,textfont=bf}
 % \captionsetup[table]{labelsep=endash,labelfont=bf,textfont=bf}
@@ -64,8 +68,9 @@ $\mathtt{#1}$%
 }
 %\newcommand{\mcode}[1]{\texttt{#1}}
 
+\onehalfspacing
+\setlength{\emergencystretch}{3em}
 \urlstyle{rm}
-\sloppy
 
 %\title{Um Processo de Conformidade Arquitetural voltado à Arquitetura de Microsserviços}
 \title{\textcolor{blue}{Conciliation Bank Application}:\\{\large \textcolor{blue}{Check the communication and structural design conformance}}}
@@ -97,30 +102,133 @@ $\mathtt{#1}$%
         framextopmargin=0cm,
         boxpos=c,
         frame=single,
-	basicstyle=\linespread{0.85}\ttfamily \scriptsize,
+	    basicstyle=\linespread{0.85}\ttfamily \scriptsize,
         commentstyle=\itshape\color{darkgreen},
-        showstringspaces=true,        
+        showstringspaces=true,  
+        mathescape=true,
         tabsize=4,
         showstringspaces=true,
         moredelim=**[is][\color{bostonuniversityred}\normalfont\bfseries]{@}{@},
-	moredelim=**[is][\normalfont\bfseries\color{blue(pigment)}]{|}{|},
+        moredelim=**[is][\normalfont\bfseries\color{blue(pigment)}]{|}{|},
     moredelim=**[is][\normalfont\color{verdeescuro}]{&}{&},
-	emph={[1]only,can,cannot,depend,create,access,must,implement,useannotation,communicate, must-communicate, cannot-communicate, can-communicate, module,declare,can-communicate-only, can-depend, can-useannotation, can-throw, can-access-only, can-depend-only, cannot-depend, must-useannotation, cannot-access, must-access,must-implement, can-access, must-depend, must-extend},emphstyle={[1]\bfseries}, 
+    emph={[2](a), (b), (c)},emphstyle={[2]\itshape\color{gray}},
+	emph={[1]only,can,cannot,depend,create,access,must,implement,useannotation,communicate, must-communicate, cannot-communicate, can-communicate, module,declare,can-communicate-only, can-depend, can-useannotation, can-throw, can-access-only, can-depend-only, cannot-depend, must-useannotation, cannot-access, must-access,must-implement, can-access, must-depend, must-extend},emphstyle={[1]\bfseries}% 	emph={Ms1_url, Ms1_repositorio, Ms1_linguagem, MsN_url, MsN_repositorio, MsN_linguagem},emphstyle={\bfseries},
 %xleftmargin=0.3cm,
 %xrightmargin=0.3cm,
 }
-
+\onehalfspacing
 
 
 
 \begin{document} 
-
+\sloppy
 \maketitle
 
-
 \vspace{-0.3cm}
-\noindent\textbf{\large{\textcolor{blue}{Architectural design of the microservices of a bank conciliation application}}}
+\noindent\textbf{\large{\textcolor{blue}{Architectural design of the microservices Bank's Cconciliation application}}}
 \label{sec:Estruturaltodos}
+
+%--------------------------------------------
+---------------------------
+
+
+\noindent\textbf{\textcolor{blue}{\mcode{{Node}{-}{Middle}} system}}
+\label{sec:ApendiceAudit}
+
+\label{apend:especArquiteturalNodeMiddle}
+
+%--------------------------------------------
+\begin{lstlisting}[style=colorido, caption={Especificação do Projeto Arquitetural do orquestrador Node-Middle.},label={list:especArquiteturalNodeMiddle}
+]
+module AccessProfile: node-middleware.src.conciliacaoBancaria.accessProfile.**
+module App: node-middleware.src.conciliacaoBancaria.app
+module Assignment: node-middleware.src.conciliacaoBancaria.assignment.**
+module AttributesSet: node-middleware.src.conciliacaoBancaria.attributesSet.**
+module AuditLog: node-middleware.src.conciliacaoBancaria.auditLog.**
+module BankAccounts: node-middleware.src.conciliacaoBancaria.bankAccounts.**
+module BankStatement: node-middleware.src.conciliacaoBancaria.bankStatement.**
+module Categories: node-middleware.src.conciliacaoBancaria.categories.**
+module Cities: node-middleware.src.conciliacaoBancaria.cities.**
+module Client: node-middleware.src.conciliacaoBancaria.client.**
+module ConcilPlan: node-middleware.src.conciliacaoBancaria.conciliationPlan.**
+module ConcilReport: node-middleware.src.conciliacaoBancaria.conciliationReport.**
+module ConcilSummary: node-middleware.src.conciliacaoBancaria.conciliationSummary.**
+module Config: node-middleware.src.config.**
+module Dashboard: node-middleware.src.conciliacaoBancaria.dashboard.**
+module Establishment: node-middleware.src.conciliacaoBancaria.establishment.**
+module EstablishGroups: node-middleware.src.conciliacaoBancaria.establishmentGroups.**
+module FileUpload: node-middleware.src.conciliacaoBancaria.fileUpload.**
+module FinancMovements: node-middleware.src.conciliacaoBancaria.financialMovements.**
+module Home: node-middleware.src.conciliacaoBancaria.home.**
+module Index: node-middleware.src.conciliacaoBancaria.index
+module ManualConcil: node-middleware.src.conciliacaoBancaria.manualConciliation.**
+module Node_module: node-middleware.node_modules.**
+module OccurrenceReason: node-middleware.src.conciliacaoBancaria.occurrenceReason.**
+module OccurrenceReport: node-middleware.src.conciliacaoBancaria.occurrenceReport.**
+module Operator: node-middleware.src.conciliacaoBancaria.operator.**
+module ProcessedFiles: node-middleware.src.conciliacaoBancaria.processedFiles.**
+module Routes: node-middleware.src.conciliacaoBancaria.routes
+module States: node-middleware.src.conciliacaoBancaria.states.**
+module Task: node-middleware.src.conciliacaoBancaria.task.**
+module TransfData: node-middleware.src.transformationData.**
+module Treegrid: node-middleware.src.conciliacaoBancaria.treegrid.**
+module User: node-middleware.src.conciliacaoBancaria.user.**
+#Restricoes do Projeto Arquitetural RP's
+#Restricoes only-can
+only App can-access Routes 																																																							"#RP1"
+
+#Restricoes can-only
+Index can-access-only App, Node_module, Config, TransfData 																							"#RP2"
+App can-access-only Routes, Node_module, Config, TransfData																							"#RP3"
+Routes can-access-only ConciliacaoBancaria, Node_module, Config, TransfData							"#RP4"
+AccessProfile can-access-only AccessProfile, Node_module, Config, TransfData						"#RP5"
+Assignment can-access-only Assignment, Node_module, Config, TransfData												"#RP6"
+AttributesSet can-access-only AttributesSet, Node_module, Config, TransfData						"#RP7"
+AuditLog can-access-only AuditLog, Node_module, Config, TransfData																"#RP8"@*@
+BankAccounts can-access-only BankAccounts, Node_module, Config, TransfData								"#RP9"
+BankStatement can-access-only BankStatement, Node_module, Config, TransfData						"#RP10"@*@
+Categories can-access-only Categories, Node_module, Config, TransfData												"#RP11"
+Cities can-access-only Cities, Node_module, Config, TransfData																				"#RP12"
+Client can-access-only Client, Node_module, Config, TransfData																				"#RP13"
+ConcilPlan can-access-only ConcilPlan, Node_module, Config, TransfData												"#RP14"
+ConcilReport can-access-only ConcilReport, Node_module, Config, TransfData								"#RP15"@*@
+ConcilSummary can-access-only ConcilSummary, Node_module, Config, TransfData						"#RP16"@*@
+Dashboard can-access-only Dashboard, Node_module, Config, TransfData														"#RP17"@*@
+Establishment can-access-only Establishment, Node_module, Config, TransfData						"#RP18"
+EstablishGroups can-access-only EstablishGroups, Node_module, Config, TransfData		"#RP19"
+FileUpload can-access-only FileUpload, Node_module, Config, TransfData												"#RP20"
+FinancMovements can-access-only FinancMovements, Node_module, Config, TransfData		"#RP21"@*@
+Home can-access-only Home, Node_module, Config, TransfData																								"#RP22"
+ManualConcil can-access-only ManualConcil, Node_module, Config, TransfData								"#RP23"@*@
+OccurrenceReason can-access-only OccurrenceReason, Node_module, Config, TransfData"#RP24"
+OccurrenceReport can-access-only OccurrenceReport, Node_module, Config, TransfData"#RP25"@*@
+Operator can-access-only Operator, Node_module, Config, TransfData																"#RP26"@*@
+ProcessedFiles can-access-only ProcessedFiles, Node_module, Config, TransfData				"#RP27"
+States can-access-only States, Node_module, Config, TransfData																				"#RP28"
+Task can-access-only Task, Node_module, Config, TransfData																								"#RP29"
+Treegrid can-access-only Treegrid, Node_module, Config, TransfData																"#RP30"
+User can-access-only User, Node_module, Config, TransfData																								"#RP31"
+TransfData can-access-only TransfData, Node_module, Config																								"#RP33"
+
+#Restricoes must
+Index must-access App																																																													"#RP34"
+App must-access Routes																																																												"#RP35"
+
+#Restricoes cannot
+App cannot-depend Index																																																											"#RP36"
+Routes cannot-depend Index, App																																																			"#RP37"
+
+\end{lstlisting}
+%--------------------------------------------
+%--------------------------------------------
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.99\textwidth]{figuras/violacoesNodeMiddle.png}
+\vspace{-0.4cm}
+\caption{\color{black}{{\mcode{{Node}}{-}\mcode{{Middle}}} architectural design violations.}}
+\label{fig:violacoesNodeMiddle}
+\end{figure}
+%----------------
 
 %--------------------------------------------
 \noindent\textbf{\textcolor{blue}{Audit microservice}}
@@ -128,7 +236,7 @@ $\mathtt{#1}$%
 
 \vspace{-0.04cm}
 %-------------------------------------------
-\begin{lstlisting}[style=colorido, caption={\textcolor{blue}{Audit microservice's architectural project specification.}},label={list:especArquiteturalAudit}
+\begin{lstlisting}[style=colorido, caption={\textcolor{blue}{Audit microservice's architectural design specification.}},label={list:especArquiteturalAudit}
 ]
 #Internal modules of the Audit microservice
 module Controller: br.com.microservices.audit.controller.*
@@ -149,27 +257,26 @@ module Jndi: org.springframework.jndi.**
 
 #Structural Design Constraints  SC's
 #Only-can		
-only Controller, Service can-depend Service																																							"#SC1"
-only Controller can-useannotation CtlrAnnotations																																	"#SC2"
-only Service can-depend Jndi																																																						"#SC3"
-only Service can-throw ExceptBC																																																			"#SC4"
+only Controller, Service can-depend Service	$\hspace{158pt}$"#Audit-SC1"
+only Controller can-useannotation CtlrAnnotations $\hspace{130pt}$"#Audit-SC2"
+only Service can-depend Jndi $\hspace{230pt}$"#Audit-SC3"
+only Service can-throw ExceptBC	$\hspace{217pt}$"#Audit-SC4"
 
 #Can-only
-Main can-access-only Controller, MainAnnotations, Logger, Apache, $java											"#SC5"@*@
-
+Main can-access-only Controller, MainAnnotations, Logger, Apache, java $\hspace{28pt}$"#Audit-SC5"@*@
 #Cannot
-Domain cannot-depend JPA																																																										"#SC6"
-Main cannot-depend CBMultitenancy																																																	"#SC7"
+Domain cannot-depend JPA $\hspace{249pt}$"#Audit-SC6"
+Main cannot-depend CBMultitenancy $\hspace{206pt}$"#Audit-SC7"
 
 #Must 
-Service must-useannotation ServiceAnnotation																																						"#SC8"
+Service must-useannotation ServiceAnnotation $\hspace{154pt}$"#Audit-SC8"
 \end{lstlisting}
 %--------------------------------------------
 %--------------------------------------------
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.6\textwidth]{figuras/violacoesAudit.png}
-\caption{\textcolor{blue}{Audit microservice's architectural project violations.}}
+\caption{\textcolor{blue}{Audit microservice's architectural design violations.}}
 \label{fig:microservices}
 \end{figure}
 %--------------------------------------------
@@ -179,7 +286,7 @@ Service must-useannotation ServiceAnnotation																																				
 
 % \vspace{-0.04cm}
 %--------------------------------------------
-\begin{lstlisting}[style=colorido, caption={\textcolor{blue}{Authentication microservice's architectural project specification.}},label={list:especArquiteturalAuthentication}
+\begin{lstlisting}[style=colorido, caption={\textcolor{blue}{Authentication microservice's architectural design specification.}},label={list:especArquiteturalAuthentication}
 ]
 #Internal modules of the Authentication microservice
 module Controller: br.com.microservices.authentication. controller.**
@@ -197,20 +304,20 @@ module ServiceAnnotation: org.springframework.stereotype.Service
 
 #Structural Design Constraints SC's
 #Only-can
-only Controller can-useannotation CtlrAnnotations																																		"#SC1"
-only Main can-useannotation MainAnnotations																																								"#SC2"
-only Service can-useannotation ServiceAnnotation																																			"#SC3"
-only Domain, Controller, Service can-depend PltDomain																														"#SC4"
-only Service can-depend MyBatis																																																				"#SC5"@*@
+only Controller can-useannotation CtlrAnnotations $\hspace{98pt}$"#Authentication-SC1"
+only Main can-useannotation MainAnnotations	$\hspace{126pt}$"#Authentication-SC2"
+only Service can-useannotation ServiceAnnotation $\hspace{102pt}$"#Authentication-SC3"
+only Domain, Controller, Service can-depend PltDomain $\hspace{80pt}$"#Authentication-SC4"
+only Service can-depend MyBatis	$\hspace{184pt}$"#Authentication-SC5"@*@
 
 #Cannot
-$system cannot-depend BaseCommons																																																		"#SC6"
-Service cannot-access Controller																																																			"#SC7"
+system cannot-depend BaseCommons $\hspace{180pt}$"#Authentication-SC6"
+Service cannot-access Controller $\hspace{180pt}$"#Authentication-SC7"
 
 #Must
-Controller must-access Service, Domain																																													"#SC8"
-Service must-useannotation ServiceAnnotation																																							"#SC9"@*@
-Main must-useannotation MainAnnotations																																												"#SC10"
+Controller must-access Service, Domain	$\hspace{151pt}$"#Authentication-SC8"
+Service must-useannotation ServiceAnnotation $\hspace{122pt}$"#Authentication-SC9"@*@
+Main must-useannotation MainAnnotations	$\hspace{146pt}$"#Authentication-SC10"
 \end{lstlisting}
 %--------------------------------------------
 %--------------------------------------------
@@ -218,7 +325,7 @@ Main must-useannotation MainAnnotations																																									
 \centering
 \includegraphics[width=0.65\textwidth]{figuras/violacoesAuthentication.png}
 %\caption{Arquitetura de Microsserviços para o contexto de venda de produtos}
-\caption{\textcolor{blue}{Authentication microservices's architectural project violations.}}
+\caption{\textcolor{blue}{Authentication microservices's architectural design violations.}}
 \label{fig:microservices}
 \end{figure}
 %--------------------------------------------
@@ -226,7 +333,7 @@ Main must-useannotation MainAnnotations																																									
 \noindent\textbf{\textcolor{blue}{Authorization microservice}}
 \label{sec:ApendiceAuthorization}
 %--------------------------------------------
-\begin{lstlisting}[style=colorido, caption={ \textcolor{blue}{Authorization microservice's architectural project specification.}},label={list:especArquiteturalAuthorization}
+\begin{lstlisting}[style=colorido, caption={ \textcolor{blue}{Authorization microservice's architectural design specification.}},label={list:especArquiteturalAuthorization}
 ]
 #Internal modules of the Authorization microservice
 module Controller: br.com.microservices.authorization.controller.*
@@ -245,23 +352,23 @@ module ServiceAnnotation: org.springframework.stereotype.Service
 
 #Structural Design Constraints SC's
 #Only-can
-only Controller, Service can-depend Service																																								"#SC1"
-only Controller can-useannotation CtlrAnnotations																																		"#SC2"
-only Service can-depend Jndi																																																							"#SC3"
-only Main can-depend MainAnnotations																																															"#SC4"
+only Controller, Service can-depend Service	$\hspace{129pt}$"#Authorization-SC1"
+only Controller can-useannotation CtlrAnnotations $\hspace{101pt}$"#Authorization-SC2"
+only Service can-depend Jndi $\hspace{201pt}$"#Authorization-SC3"
+only Main can-depend MainAnnotations $\hspace{163pt}$"#Authorization-SC4"
 	
 #Can-only
-Main can-depend-only $java, MainAnnotations, Apache																																"#SC5"@*@
+Main can-depend-only java, MainAnnotations, Apache $\hspace{97pt}$"#Authorization-SC5"@*@
 
 #Cannot
-Controller cannot-access Main																																																						"#SC6"
-$system cannot-depend BCMultitenancy																																															"#SC7"
-Service cannot-access Controller																																																			"#SC8"
+Controller cannot-access Main $\hspace{198pt}$"#Authorization-SC6"
+system cannot-depend BCMultitenancy	$\hspace{170pt}$"#Authorization-SC7"
+Service cannot-access Controller $\hspace{184pt}$"#Authorization-SC8"
 
 #Must
-ServiceImpl must-useannotation ServiceAnnotation																																			"#SC9"
-ServiceImpl must-implement ServiceInterface																																								"#SC10"
-Controller must-useannotation CtlrAnnotations																																						"#SC11"
+ServiceImpl must-useannotation ServiceAnnotation $\hspace{106pt}$"#Authorization-SC9"
+ServiceImpl must-implement ServiceInterface 	$\hspace{125pt}$"#Authorization-SC10"
+Controller must-useannotation CtlrAnnotations $\hspace{120pt}$"#Authorization-SC11"
 \end{lstlisting}
 %--------------------------------------------
 %--------------------------------------------
@@ -269,7 +376,7 @@ Controller must-useannotation CtlrAnnotations																																			
 \centering
 \includegraphics[width=0.75\textwidth]{figuras/violacoesAuthorization.png}
 %\caption{Arquitetura de Microsserviços para o contexto de venda de produtos}
-\caption{\textcolor{blue}{Authorization microservices's architectural project violations.}}
+\caption{\textcolor{blue}{Authorization microservices's architectural design violations.}}
 \label{fig:microservices}
 \end{figure}
 %--------------------------------------------
@@ -279,7 +386,7 @@ Controller must-useannotation CtlrAnnotations																																			
 \label{sec:ApendiceConciliation}
 
 %-------------------------------------------
-\begin{lstlisting}[style=colorido, caption={\textcolor{blue}{Conciliation microservice's architectural project specification.}},label={list:especArquiteturalConciliation}
+\begin{lstlisting}[style=colorido, caption={\textcolor{blue}{Conciliation microservice's architectural design specification.}},label={list:especArquiteturalConciliation}
 ]
 #Internal modules of the Conciliation microservice
 module Controller: br.com.microservices.conciliation.controller.**
@@ -307,31 +414,28 @@ module SpringRepository: org.springframework.stereotype.Repository
 
 #Structural Design Constraints SC's
 #Only-can
-only Controller can-useannotation CtlrAnnotations																																	"#SC1"
-only Scheduled can-depend AmazonSQS																																															"#SC2"
-only Service can-access DAO																																																							"#SC3"
-only Controller, Service can-access Service																																							"#SC4"
-only Main can-depend BCMultitenancy																																															"#SC5"
-only DAO, Service can-depend BCDAO																																																"#SC6"
+only Controller can-useannotation CtlrAnnotations $\hspace{106pt}$"#Conciliation-SC1"
+only Scheduled can-depend AmazonSQS	$\hspace{173pt}$"#Conciliation-SC2"
+only Service can-access DAO	$\hspace{212pt}$"#Conciliation-SC3"
+only Controller, Service can-access Service $\hspace{135pt}$"#Conciliation-SC04"
+only Main can-depend BCMultitenancy	$\hspace{174pt}$"#Conciliation-SC5"
+only DAO, Service can-depend BCDAO	$\hspace{179pt}$"#Conciliation-SC6"
 	
 #Can-only
-Util can-depend-only Util, $java, Logger																																										"#SC7"@*@
-only Scheduled can-depend AmazonSQS																																															"#SC8"
-Domain can-access-only BCModel, BCDomain, $java																																			"#SC9"
-ImplementDAO can-depend-only JPA, Hibernate, $java, SpringRepository, BCModel					"#SC10"
-Main can-access-only Controller, MainAnnotations, Logger,  $java																			"#SC11"
+Util can-depend-only Util, java, Logger $\hspace{155pt}$"#Conciliation-SC7"@*@
+only Scheduled can-depend AmazonSQS	 $\hspace{174pt}$"#Conciliation-SC8"
+Domain can-access-only BCModel, BCDomain, java $\hspace{122pt}$"#Conciliation-SC9"
+ImplementDAO can-depend-only JPA, Hibernate, java, SpringRepository, BCModel$\hspace{293pt}$"#Conciliation-SC"10
+Main can-access-only Controller, MainAnnotations, Logger, java $\hspace{44pt}$"#Conciliation-SC11"
 
 #Cannot
-Domain cannot-depend JPA																																																										"#SC12"
-Controller cannot-access DAO																																																						"#SC13"
+Domain cannot-depend JPA $\hspace{227pt}$"#Conciliation-SC12"
+Controller cannot-access DAO $\hspace{208pt}$"#Conciliation-SC13"
 
 #Must
-Main must-useannotation MainAnnotations																																											"#SC14"
-ImplementDAO must-depend SpringRepository																																									"#SC15"
-Service must-useannotation ServiceAnnotation																																						"#SC16"
-
-
-	
+Main must-useannotation MainAnnotation	$\hspace{160pt}$"#Conciliation-SC14"
+ImplementDAO must-depend SpringRepository $\hspace{146pt}$"#Conciliation-SC15"
+Service must-useannotation ServiceAnnotation $\hspace{131pt}$"#Conciliation-SC16"
 \end{lstlisting}
 %--------------------------------------------
 %--------------------------------------------
@@ -339,7 +443,7 @@ Service must-useannotation ServiceAnnotation																																				
 \centering
 \includegraphics[width=0.75\textwidth]{figuras/violacoesConciliation.png}
 %\caption{Arquitetura de Microsserviços para o contexto de venda de produtos}
-\caption{\textcolor{blue}{Conciliation microservices's architectural project violations.}}
+\caption{\textcolor{blue}{Conciliation microservices's architectural design violations.}}
 \label{fig:microservices}
 \end{figure}
 %--------------------------------------------
@@ -351,7 +455,7 @@ Service must-useannotation ServiceAnnotation																																				
 
 %--------------------------------------------
 \vspace{0.2cm}
-\begin{lstlisting}[style=colorido, caption={\textcolor{blue}{Dashboard microservice's architectural project specification.}},label={list:especArquiteturalDashboard}
+\begin{lstlisting}[style=colorido, caption={\textcolor{blue}{Dashboard microservice's architectural design specification.}},label={list:especArquiteturalDashboard}
 ]
 module Controller: br.com.microservices.dashboard.controller.*
 module DAO: br.com.microservices.dashboard.dao.**
@@ -369,45 +473,44 @@ module SpringRepository: org.springframework.stereotype.Repository
 
 #Structural Design Constraints SC's
 #Only-can
-only Controller can-useannotation CtlrAnnotations																																		"#SC1"
-only Controller can-depend BCController																																												"#SC2"
-only Main can-depend BCMultitenancy																																																"#SC3"
-only Service, DAO can-access DAO																																																			"#SC4"
+only Controller can-useannotation CtlrAnnotations $\hspace{111pt}$"#Dashboard-SC1"
+only Controller can-depend BCController	$\hspace{159pt}$"#Dashboard-SC2"
+only Main can-depend BCMultitenancy	$\hspace{179pt}$"#Dashboard-SC3"
+only Service, DAO can-access DAO $\hspace{193pt}$"#Dashboard-SC4"
 
 #Can-only
-ImplementDAO can-depend-only JPA, Hibernate, $java, SpringRepository, BCModel						"#SC5"
+ImplementDAO can-depend-only JPA, Hibernate, java, SpringRepository, BCModel$\hspace{297pt}$"#Dashboard-SC5"
 
 #Cannot
-Controller cannot-access DAO																																																							"#SC6"
-Service cannot-depend Controller																																																			"#SC7"
+Controller cannot-access DAO $\hspace{212pt}$"#Dashboard-SC6"
+Service cannot-depend Controller $\hspace{193pt}$"#Dashboard-SC7"
 
 #Must
-Main must-useannotation MainAnnotations																																												"#SC8"
-Controller must-access Service																																																					"#SC9"@*@
-ImplementDAO must-implement DAOInterface																																											"#SC10"
-ImplementDAO must-depend SpringRepository																																										"#SC11"
-Service must-useannotation ServiceAnnotation																																							"#SC12"
+Main must-useannotation MainAnnotations	$\hspace{158pt}$"#Dashboard-SC8"
 
-
+Controller must-access Service	$\hspace{201pt}$"#Dashboard-SC9"@*@
+ImplementDAO must-implement DAOInterface $\hspace{154pt}$"#Dashboard-SC10"
+ImplementDAO must-depend SpringRepository $\hspace{149pt}$"#Dashboard-SC11"
+Service must-useannotation ServiceAnnotation $\hspace{134pt}$"#Dashboard-SC12"
 \end{lstlisting}
 %--------------------------------------------
-%--------------------------------------------
-\begin{figure}[ht]
-\centering
-\includegraphics[width=0.7\textwidth]{figuras/violacoesDashboard.png}
-%\caption{Arquitetura de Microsserviços para o contexto de venda de produtos}
-\caption{\textcolor{blue}{Dashboard microservices's architectural project violations.}}
-\label{fig:microservices}
-\end{figure}
-%--------------------------------------------
+% %--------------------------------------------
+% \begin{figure}[ht]
+% \centering
+% \includegraphics[width=0.7\textwidth]{figuras/violacoesDashboard.png}
+% %\caption{Arquitetura de Microsserviços para o contexto de venda de produtos}
+% \caption{\textcolor{blue}{Dashboard microservices's architectural project violations.}}
+% \label{fig:microservices}
+% \end{figure}
+% %--------------------------------------------
 
-\newpage
+% \newpage
 \noindent\textbf{\large{\textcolor{blue}{Entries microservice}}}
 \label{sec:ApendiceEntries}
 
 
 %--------------------------------------------
-\begin{lstlisting}[style=colorido, caption={ \textcolor{blue}{Entries microservice's architectural project specification.}},label={list:especArquiteturalEntries}
+\begin{lstlisting}[style=colorido, caption={ \textcolor{blue}{Entries microservice's architectural design specification.}},label={list:especArquiteturalEntries}
 ]
  #Internal modules of the Entries microservice
 module Util: br.com.microservices.entries.utils.*
@@ -432,24 +535,24 @@ module SpringRepository: org.springframework.stereotype.Repository
 
 #Structural Design Constraints SC's
 #Only-can 
-only Controller can-useannotation CtlrAnnotations																																	"#SC1"
-only Controller, Service can-access Service																																							"#SC2"
-only Service can-access DAO																																																							"#SC3"
-only Main can-depend BCMultitenancy																																															"#SC4"@*@
+only Controller can-useannotation CtlrAnnotations $\hspace{123pt}$"#Entries-SC1"
+only Controller, Service can-access Service	$\hspace{152pt}$"#Entries-SC2"
+only Service can-access DAO	$\hspace{229pt}$"#Entries-SC3"
+only Main can-depend BCMultitenancy $\hspace{190pt}$"#Entries-SC4"@*@
 
 #Can-only
-Util can-depend-only Util, $java																																																		"#SC5"@*@
-ImplementDAO can-depend-only JPA, Hibernate, SpringRepository, $java														"#SC6"
+Util can-depend-only Util, java	$\hspace{210pt}$"#Entries-SC5"@*@
+ImplementDAO can-depend-only JPA, Hibernate, SpringRepository, java	$\hspace{37pt}$"#Entries-SC6"
 
 #Cannot
-Controller cannot-access DAO, BCDAO																																															"#SC7"@*@
+Controller cannot-access DAO $\hspace{224pt}$"#Entries-SC7"@*@
 
 #Must
-Main must-useannotation MainAnnotations																																											"#SC8"
-Controller must-useannotation CtlrAnnotations																																					"#SC9"
-Service must-useannotation ServiceAnnotation																																						"#SC10"
-Model, Serializer must-implement Serializable																																					"#SC11"@*@
-ImplementDAO must-implement SpringRepository																																						"#SC12"
+Main must-useannotation MainAnnotations	$\hspace{170pt}$"#Entries-SC8"
+Controller must-useannotation CtlrAnnotations $\hspace{143pt}$"#Entries-SC9"
+Service must-useannotation ServiceAnnotation $\hspace{147pt}$"#Entries-SC10"
+Model, Serializer must-implement Serializable $\hspace{143pt}$"#Entries-SC11"@*@
+ImplementDAO must-implement SpringRepository $\hspace{147pt}$"#Entries-SC12"
 
 \end{lstlisting}
 %--------------------------------------------
@@ -458,7 +561,7 @@ ImplementDAO must-implement SpringRepository																																				
 \centering
 \includegraphics[width=0.7\textwidth]{figuras/violacoesEntries.png}
 %\caption{Arquitetura de Microsserviços para o contexto de venda de produtos}
-\caption{\textcolor{blue}{Entries microservices's architectural project violations.}}
+\caption{\textcolor{blue}{Entries microservices's architectural design violations.}}
 \label{fig:microservices}
 \end{figure}
 %--------------------------------------------
@@ -470,7 +573,7 @@ ImplementDAO must-implement SpringRepository																																				
 
 
 %--------------------------------------------
-\begin{lstlisting}[style=colorido, caption={\textcolor{blue}{FileLoad microservice's architectural project specification.}},label={list:especArquiteturalFileLoad}
+\begin{lstlisting}[style=colorido, caption={\textcolor{blue}{FileLoad microservice's architectural design specification.}},label={list:especArquiteturalFileLoad}
 ]
 #Internal modules of the  FileLoad microservice
 module DAO: br.com.microservices.fileload.daos.*
@@ -497,23 +600,23 @@ module SpringRepository: org.springframework.stereotype.Repository
 
 #Structural Design Constraints SC's
 #Only-can 
-only Model, DAO can-depend JPA, Beans																																													"#SC1"
-only Main can-useannotation MainAnnotations, DataSource																											"#SC2"
-only Main can-depend BCMultitenancy																																															"#SC3"
-only Service can-useannotation ServiceAnnotation																																		"#SC4"
+only Model, DAO can-depend JPA, Beans $\hspace{175pt}$"#FileLoad-SC1"
+only Main can-useannotation MainAnnotations, DataSource $\hspace{88pt}$"#FileLoad-SC2"
+only Main can-depend BCMultitenancy	$\hspace{184pt}$"#FileLoad-SC3"
+only Service can-useannotation ServiceAnnotation $\hspace{122pt}$"#FileLoad-SC4"
 
 #Can-only
-ImplementDAO can-depend-only JPA, Hibernate, $java, SpringRepository, BCModel					"#SC5"
+ImplementDAO can-depend-only JPA, Hibernate, BCModel, SpringRepository $\hspace{17pt}$"#FileLoad-SC5"
 	
 #Cannot
-Main cannot-depend DAO, Model, BCDAO, JPA 																																								"#SC6"@*@
-Service cannot-access Main																																																								"#SC7"
+Main cannot-depend DAO, Model, BCDAO, JPA $\hspace{156pt}$"#FileLoad-SC6"@*@
+Service cannot-access Main $\hspace{228pt}$"#FileLoad-SC7"
 
 #Must
-ImplementDAO must-implement DAOInterface																																										"#SC8"
-ImplementDAO must-depend SpringRepository																																									"#SC9"
-Model must-implement Serializable																																																	"#SC10"@*@
-Service must-useannotation ServiceAnnotation																																						"#SC11"
+ImplementDAO must-implement DAOInterface $\hspace{161pt}$"#FileLoad-SC8"
+ImplementDAO must-depend SpringRepository $\hspace{157pt}$"#FileLoad-SC9"
+Model must-implement Serializable $\hspace{195pt}$"#FileLoad-SC10"@*@
+Service must-useannotation ServiceAnnotation $\hspace{142pt}$"#FileLoad-SC11"
 \end{lstlisting}
 %--------------------------------------------
 %--------------------------------------------
@@ -521,7 +624,7 @@ Service must-useannotation ServiceAnnotation																																				
 \centering
 \includegraphics[width=0.7\textwidth]{figuras/violacoesFileLoad.png}
 \vspace{-0.2cm}
-\caption{\textcolor{blue}{FileLoad microservices's architectural project violations.}}
+\caption{\textcolor{blue}{FileLoad microservices's architectural design violations.}}
 \label{fig:microservices}
 \end{figure}
 %--------------------------------------------
@@ -532,7 +635,7 @@ Service must-useannotation ServiceAnnotation																																				
 
 
 %--------------------------------------------
-\begin{lstlisting}[style=colorido, caption={\textcolor{blue}{FileProcess microservice's architectural project specification.}},label={list:especArquiteturalFileProccess}
+\begin{lstlisting}[style=colorido, caption={\textcolor{blue}{FileProcess microservice's architectural design specification.}},label={list:especArquiteturalFileProccess}
 ]
 #Internal modules of the FileProcess microservice
 module DAO: br.com.microservices.process.dao.**
@@ -561,26 +664,25 @@ module SpringRepository: org.springframework.stereotype.Repository
 
 #Structural Design Constraints SC's
 #Only-can
-only Main can-useannotation MainAnnotations																																						"#SC1"
-only Scheduling can-access ScdFramework																																										"#SC2"
-only Main can-depend BCMultitenancy																																														"#SC3"
-only DAO, Model can-depend JPA																																				"#SC4"@*@
-only Service, Scheduling can-depend AmazonService																																"#SC5"
+only Main can-useannotation MainAnnotations	$\hspace{136pt}$"#FileProcess-SC1"
+only Scheduling can-access ScdFramework $\hspace{155pt}$"#FileProcess-SC2"
+only Main can-depend BCMultitenancy $\hspace{174pt}$"#FileProcess-SC3"
+only DAO, Model can-depend JPA	$\hspace{198pt}$"#FileProcess-SC4"@*@
+only Service, Scheduling can-depend AmazonService 	$\hspace{103pt}$"#FileProcess-SC5"
 
-#Restricoes  can-only
-Util can-depend-only Util, BCUtil, $java, Logger																																	"#SC6"@*@
+#Can-only
+Util can-depend-only Util, BCUtil, java, Logger $\hspace{116pt}$"#FileProcess-SC6"@*@
     
 #Cannot
-Service cannot-depend Controller																																																	"#SC7"
+Service cannot-depend Controller $\hspace{188pt}$"#FileProcess-SC7"
     
 #Must
-Main must-useannotation MainAnnotations																																										"#SC8"
-Service must-useannotation ServiceAnnotation																																					"#SC9"
-ImplementDAO must-implement DAOInterface, SpringRepository																							"#SC10"
-Model must-implement Serializable																																																"#SC11"@*@
-Scheduling must-depend ScdFramework																																														"#SC12"
-Scheduling must-useannotation ScdAnnotation																																						"#SC13"
-
+Main must-useannotation MainAnnotations	$\hspace{155pt}$"#FileProcess-SC8"
+Service must-useannotation ServiceAnnotation $\hspace{131pt}$"#FileProcess-SC9"
+ImplementDAO must-implement DAOInterface, SpringRepository $\hspace{64pt}$"#FileProcess-SC10"
+Model must-implement Serializable $\hspace{184pt}$"#FileProcess-SC11"@*@
+Scheduling must-depend ScdFramework $\hspace{175pt}$"#FileProcess-SC12"
+Scheduling must-useannotation ScdAnnotation $\hspace{136pt}$"#FileProcess-SC13"
 \end{lstlisting}
 
 %--------------------------------------------
@@ -588,7 +690,7 @@ Scheduling must-useannotation ScdAnnotation																																					
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.75\textwidth]{figuras/violacoesFileProccess.png}
-\caption{\textcolor{blue}{FileProcess microservices's architectural project violations.}}
+\caption{\textcolor{blue}{FileProcess microservices's architectural design violations.}}
 \label{fig:microservices}
 \end{figure}
 %--------------------------------------------
@@ -599,7 +701,7 @@ Scheduling must-useannotation ScdAnnotation																																					
 \label{sec:ApendiceReports}
 
 %--------------------------------------------
-\begin{lstlisting}[style=colorido,caption={\textcolor{blue}{Reports microservice's architectural project specification.}},label={list:especArquiteturalReports}
+\begin{lstlisting}[style=colorido,caption={\textcolor{blue}{Reports microservice's architectural design specification.}},label={list:especArquiteturalReports}
 ]
 #Internal modules of the Reports microservice
 module Controller: br.com.microservices.reports.controller.**
@@ -617,19 +719,19 @@ module ServiceAnnotation: org.springframework.stereotype.Service
 
 #Structural Design Constraints SC's
 #Only-can
-only Controller can-useannotation CtlrAnnotations																																	"#SC1"
-only Main can-depend BCMultitenancy																																															"#SC2"
-only Main can-useannotation MainAnnotations																																							"#SC3"
+only Controller can-useannotation CtlrAnnotations $\hspace{120pt}$"#Reports-SC1"
+only Main can-depend BCMultitenancy $\hspace{187pt}$"#Reports-SC2"
+only Main can-useannotation MainAnnotations $\hspace{148pt}$"#Reports-SC3"
 
 #Cannot
-Service cannot-access Controller																																																		"#SC4"
+Service cannot-access Controller $\hspace{202pt}$"#Reports-SC4"
 
 #Must	
-Main must-useannotation MainAnnotations																																											"#SC5"
-Controller must-useannotation CtlrAnnotations																																					"#SC6"@*@
-Controller must-extend BCController																																															"#SC7"@*@
-Service must-useannotation ServiceAnnotation																																						"#SC8"
-Serializer must-depend JSONSerializer																																													"#SC9"@*@
+Main must-useannotation MainAnnotation  $\hspace{173pt}$"#Reports-SC5"
+Controller must-useannotation CtlrAnnotations $\hspace{139pt}$"#Reports-SC6"@*@
+Controller must-extend BCController	$\hspace{187pt}$"#Reports-SC7"@*@
+Service must-useannotation ServiceAnnotation $\hspace{144pt}$"#Reports-SC8"
+Serializer must-depend JSONSerializer	$\hspace{178pt}$"#Reports-SC9"@*@
 
 \end{lstlisting}
 %--------------------------------------------
@@ -637,7 +739,7 @@ Serializer must-depend JSONSerializer																																											
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.65\textwidth]{figuras/violacoesReports.png}
-\caption{\textcolor{blue}{Reports microservices's architectural project violations.}}
+\caption{\textcolor{blue}{Reports microservices's architectural design violations.}}
 \label{fig:microservices}
 \end{figure}
 %--------------------------------------------
@@ -647,7 +749,7 @@ Serializer must-depend JSONSerializer																																											
 \label{sec:ApendiceSummary}
 
 %--------------------------------------------
-\begin{lstlisting}[style=colorido, caption={\textcolor{blue}{Summary microservice's architectural project specification.}},label={list:especArquiteturalSummary}
+\begin{lstlisting}[style=colorido, caption={\textcolor{blue}{Summary microservice's architectural design specification.}},label={list:especArquiteturalSummary}
 ]
 #Internal modules of the Summary microservice
 module BaseService:  br.com.microservices.summary.service.BaseService
@@ -670,29 +772,29 @@ module ServiceAnnotation: org.springframework.stereotype.Service
 
 #Structural Design Constraints SC's
 #Only-can
-only Service can-useannotation ServiceAnnotation																																		"#SC1" 
-only Controller can-useannotation CtlrAnnotations																																	"#SC2"
-only Main can-useannotation MainAnnotations																																							"#SC3"
-only Main can-depend BCMultitenancy																																															"#SC4"
+only Service can-useannotation ServiceAnnotation $\hspace{118pt}$"#Summary-SC1" 
+only Controller can-useannotation CtlrAnnotations	$\hspace{114pt}$"#Summary-SC2"
+only Main can-useannotation MainAnnotations	$\hspace{142pt}$"#Summary-SC3"
+only Main can-depend BCMultitenancy $\hspace{180pt}$"#Summary-SC4"
 
 #Can-only	
-Util can-access-only Util, $java																																																		"#SC5"
+Util can-access-only Util, java $\hspace{200pt}$"#Summary-SC5"
 
 #Must
-Main must-useannotation MainAnnotations																																											"#SC6"
-Service must-useannotation ServiceAnnotation																																						"#SC7"@*@
-Controller must-useannotation CtlrAnnotations																																					"#SC8"@*@
-ServiceSubClass must-extend BaseService																																											"#SC9"
-ImplementDAO must-implement DAOInterface																																										"#SC10"
-ImplementDAO must-useannotation Repository																																								"#SC11"
-Controller must-access Stream																																																					"#SC12"
+Main must-useannotation MainAnnotations	$\hspace{162pt}$"#Summary-SC6"
+Service must-useannotation ServiceAnnotation $\hspace{138pt}$"#Summary-SC7"@*@
+Controller must-useannotation CtlrAnnotations $\hspace{133pt}$"#Summary-SC8"@*@
+ServiceSubClass must-extend BaseService	$\hspace{163pt}$"#Summary-SC9"
+ImplementDAO must-implement DAOInterface $\hspace{158pt}$"#Summary-SC10"
+ImplementDAO must-useannotation Repository $\hspace{148pt}$"#Summary-SC11"
+Controller must-access Stream $\hspace{210pt}$"#Summary-SC12"
 \end{lstlisting}
 %--------------------------------------------
 %--------------------------------------------
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.7\textwidth]{figuras/violacoesSummary.png}
-\caption{\textcolor{blue}{Summary microservices's archictetural project violations.}}
+\caption{\textcolor{blue}{Summary microservices's archictetural design violations.}}
 \label{fig:microservices}
 \end{figure}
 %--------------------------------------------
