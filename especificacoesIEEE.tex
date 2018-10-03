@@ -125,11 +125,10 @@ $\mathtt{#1}$%
 \maketitle
 
 \vspace{-0.3cm}
-\noindent\textbf{\large{\textcolor{blue}{Architectural design of the microservices Bank's Cconciliation application}}}
+% \noindent\textbf{\large{\textcolor{blue}{Architectural design of the microservices Bank's Conciliation application}}}
 \label{sec:Estruturaltodos}
 
-%--------------------------------------------
----------------------------
+%-----------------------------------------------------------------------
 
 
 \noindent\textbf{\textcolor{blue}{\mcode{{Node}{-}{Middle}} system}}
@@ -140,83 +139,50 @@ $\mathtt{#1}$%
 %--------------------------------------------
 \begin{lstlisting}[style=colorido, caption={Especificação do Projeto Arquitetural do orquestrador Node-Middle.},label={list:especArquiteturalNodeMiddle}
 ]
-module AccessProfile: node-middleware.src.conciliacaoBancaria.accessProfile.**
-module App: node-middleware.src.conciliacaoBancaria.app
-module Assignment: node-middleware.src.conciliacaoBancaria.assignment.**
-module AttributesSet: node-middleware.src.conciliacaoBancaria.attributesSet.**
-module AuditLog: node-middleware.src.conciliacaoBancaria.auditLog.**
-module BankAccounts: node-middleware.src.conciliacaoBancaria.bankAccounts.**
-module BankStatement: node-middleware.src.conciliacaoBancaria.bankStatement.**
-module Categories: node-middleware.src.conciliacaoBancaria.categories.**
-module Cities: node-middleware.src.conciliacaoBancaria.cities.**
-module Client: node-middleware.src.conciliacaoBancaria.client.**
-module ConcilPlan: node-middleware.src.conciliacaoBancaria.conciliationPlan.**
-module ConcilReport: node-middleware.src.conciliacaoBancaria.conciliationReport.**
-module ConcilSummary: node-middleware.src.conciliacaoBancaria.conciliationSummary.**
-module Config: node-middleware.src.config.**
-module Dashboard: node-middleware.src.conciliacaoBancaria.dashboard.**
-module Establishment: node-middleware.src.conciliacaoBancaria.establishment.**
-module EstablishGroups: node-middleware.src.conciliacaoBancaria.establishmentGroups.**
-module FileUpload: node-middleware.src.conciliacaoBancaria.fileUpload.**
-module FinancMovements: node-middleware.src.conciliacaoBancaria.financialMovements.**
-module Home: node-middleware.src.conciliacaoBancaria.home.**
-module Index: node-middleware.src.conciliacaoBancaria.index
-module ManualConcil: node-middleware.src.conciliacaoBancaria.manualConciliation.**
-module Node_module: node-middleware.node_modules.**
-module OccurrenceReason: node-middleware.src.conciliacaoBancaria.occurrenceReason.**
-module OccurrenceReport: node-middleware.src.conciliacaoBancaria.occurrenceReport.**
-module Operator: node-middleware.src.conciliacaoBancaria.operator.**
-module ProcessedFiles: node-middleware.src.conciliacaoBancaria.processedFiles.**
-module Routes: node-middleware.src.conciliacaoBancaria.routes
-module States: node-middleware.src.conciliacaoBancaria.states.**
-module Task: node-middleware.src.conciliacaoBancaria.task.**
-module TransfData: node-middleware.src.transformationData.**
-module Treegrid: node-middleware.src.conciliacaoBancaria.treegrid.**
-module User: node-middleware.src.conciliacaoBancaria.user.**
-#Restricoes do Projeto Arquitetural RP's
-#Restricoes only-can
-only App can-access Routes 																																																							"#RP1"
+#Structural Design Constraints SC's
+#Only-can
+only App can-access Routes $\hspace{249pt}$"NM-SC1"
 
-#Restricoes can-only
-Index can-access-only App, Node_module, Config, TransfData 																							"#RP2"
-App can-access-only Routes, Node_module, Config, TransfData																							"#RP3"
-Routes can-access-only ConciliacaoBancaria, Node_module, Config, TransfData							"#RP4"
-AccessProfile can-access-only AccessProfile, Node_module, Config, TransfData						"#RP5"
-Assignment can-access-only Assignment, Node_module, Config, TransfData												"#RP6"
-AttributesSet can-access-only AttributesSet, Node_module, Config, TransfData						"#RP7"
-AuditLog can-access-only AuditLog, Node_module, Config, TransfData																"#RP8"@*@
-BankAccounts can-access-only BankAccounts, Node_module, Config, TransfData								"#RP9"
-BankStatement can-access-only BankStatement, Node_module, Config, TransfData						"#RP10"@*@
-Categories can-access-only Categories, Node_module, Config, TransfData												"#RP11"
-Cities can-access-only Cities, Node_module, Config, TransfData																				"#RP12"
-Client can-access-only Client, Node_module, Config, TransfData																				"#RP13"
-ConcilPlan can-access-only ConcilPlan, Node_module, Config, TransfData												"#RP14"
-ConcilReport can-access-only ConcilReport, Node_module, Config, TransfData								"#RP15"@*@
-ConcilSummary can-access-only ConcilSummary, Node_module, Config, TransfData						"#RP16"@*@
-Dashboard can-access-only Dashboard, Node_module, Config, TransfData														"#RP17"@*@
-Establishment can-access-only Establishment, Node_module, Config, TransfData						"#RP18"
-EstablishGroups can-access-only EstablishGroups, Node_module, Config, TransfData		"#RP19"
-FileUpload can-access-only FileUpload, Node_module, Config, TransfData												"#RP20"
-FinancMovements can-access-only FinancMovements, Node_module, Config, TransfData		"#RP21"@*@
-Home can-access-only Home, Node_module, Config, TransfData																								"#RP22"
-ManualConcil can-access-only ManualConcil, Node_module, Config, TransfData								"#RP23"@*@
-OccurrenceReason can-access-only OccurrenceReason, Node_module, Config, TransfData"#RP24"
-OccurrenceReport can-access-only OccurrenceReport, Node_module, Config, TransfData"#RP25"@*@
-Operator can-access-only Operator, Node_module, Config, TransfData																"#RP26"@*@
-ProcessedFiles can-access-only ProcessedFiles, Node_module, Config, TransfData				"#RP27"
-States can-access-only States, Node_module, Config, TransfData																				"#RP28"
-Task can-access-only Task, Node_module, Config, TransfData																								"#RP29"
-Treegrid can-access-only Treegrid, Node_module, Config, TransfData																"#RP30"
-User can-access-only User, Node_module, Config, TransfData																								"#RP31"
-TransfData can-access-only TransfData, Node_module, Config																								"#RP33"
+#Can-only
+Index can-access-only App, Node_module, Config, TransfData $\hspace{95pt}$"NM-SC2"
+App can-access-only Routes, Node_module, Config, TransfData $\hspace{91pt}$"NM-SC3"
+Routes can-access-only ConciliacaoBancaria, Node_module, Config, TransfData	$\hspace{14pt}$"NM-SC4"
+AccessProfile can-access-only AccessProfile, Node_module, Config, TransfData $\hspace{5pt}$ "NM-SC5"
+Assignment can-access-only Assignment, Node_module, Config, TransfData	$\hspace{38pt}$"NM-SC6"
+AttributesSet can-access-only AttributesSet, Node_module, Config, TransfData	$\hspace{9pt}$"NM-SC7"
+AuditLog can-access-only AuditLog, Node_module, Config, TransfData	$\hspace{57pt}$"NM-SC8"@*@
+BankAccounts can-access-only BankAccounts, Node_module, Config, TransfData	$\hspace{20pt}$"NM-SC9"
+BankStatement can-access-only BankStatement, Node_module, Config, TransfData $\hspace{10pt}$"NM-SC10"@*@
+Categories can-access-only Categories, Node_module, Config, TransfData	$\hspace{39pt}$"NM-SC11"
+Cities can-access-only Cities, Node_module, Config, TransfData $\hspace{78pt}$"NM-SC12"
+Client can-access-only Client, Node_module, Config, TransfData $\hspace{78pt}$"NM-SC13"
+ConcilPlan can-access-only ConcilPlan, Node_module, Config, TransfData $\hspace{40pt}$"NM-SC14"
+ConcilReport can-access-only ConcilReport, Node_module, Config, TransfData	$\hspace{20pt}$"NM-SC15"@*@
+ConcilSummary can-access-only ConcilSummary, Node_module, Config, TransfData $\hspace{10pt}$"NM-SC16"@*@
+Dashboard can-access-only Dashboard, Node_module, Config, TransfData	$\hspace{49pt}$"NM-SC17"@*@
+Establishment can-access-only Establishment, Node_module, Config, TransfData$\hspace{313pt}$"NM-SC18"
+EstablishGroups can-access-only EstablishGroups, Node_module, Config, TransfData$\hspace{313pt}$"NM-SC19"
+FileUpload can-access-only FileUpload, Node_module, Config, TransfData	$\hspace{40pt}$"NM-SC20"
+FinancMovements can-access-only FinancMovements, Node_module, Config, TransfData$\hspace{313pt}$"NM-SC21"@*@
+Home can-access-only Home, Node_module, Config, TransfData $\hspace{97pt}$"NM-SC22"
+ManualConcil can-access-only ManualConcil, Node_module, Config, TransfData	$\hspace{20pt}$"NM-SC23"@*@
+OccurrenceReason can-access-only OccurrenceReason, Node_module, Config, TransfData$\hspace{313pt}$"NM-SC24"
+OccurrenceReport can-access-only OccurrenceReport, Node_module, Config, TransfData$\hspace{313pt}$"NM-SC25"@*@
+Operator can-access-only Operator, Node_module, Config, TransfData	$\hspace{59pt}$"NM-SC26"@*@
+ProcessedFiles can-access-only ProcessedFiles, Node_module, Config, TransfData$\hspace{313pt}$"NM-SC27"
+States can-access-only States, Node_module, Config, TransfData	$\hspace{78pt}$"NM-SC28"
+Task can-access-only Task, Node_module, Config, TransfData $\hspace{97pt}$"NM-SC29"
+Treegrid can-access-only Treegrid, Node_module, Config, TransfData	$\hspace{59pt}$"NM-SC30"
+User can-access-only User, Node_module, Config, TransfData $\hspace{97pt}$"NM-SC31"
+TransfData can-access-only TransfData, Node_module, Config $\hspace{97pt}$"NM-SC32"
 
 #Restricoes must
-Index must-access App																																																													"#RP34"
-App must-access Routes																																																												"#RP35"
+Index must-access App $\hspace{275pt}$"NM-SC33"
+App must-access Routes$\hspace{275pt}$"NM-SC34"
 
 #Restricoes cannot
-App cannot-depend Index																																																											"#RP36"
-Routes cannot-depend Index, App																																																			"#RP37"
+App cannot-depend Index	$\hspace{265pt}$"NM-SC35"
+Routes cannot-depend Index, App	$\hspace{227pt}$"NM-SC36"
 
 \end{lstlisting}
 %--------------------------------------------
@@ -225,36 +191,36 @@ Routes cannot-depend Index, App																																																	
 \centering
 \includegraphics[width=0.99\textwidth]{figuras/violacoesNodeMiddle.png}
 \vspace{-0.4cm}
-\caption{\color{black}{{\mcode{{Node}}{-}\mcode{{Middle}}} architectural design violations.}}
+\caption{\color{black}{{\mcode{{Node}}{-}\mcode{{Middle's}}} architectural design violations.}}
 \label{fig:violacoesNodeMiddle}
 \end{figure}
 %----------------
-
+\newpage
 %--------------------------------------------
 \noindent\textbf{\textcolor{blue}{Audit microservice}}
 \label{sec:ApendiceAudit}
 
 \vspace{-0.04cm}
 %-------------------------------------------
+% % #Internal modules of the Audit microservice
+% module Controller: br.com.microservices.audit.controller.*
+% module Domain: br.com.microservices.audit.domain.*
+% module Main: br.com.microservices.audit.AuditApplication
+% module Service: br.com.microservices.audit.services.[a-zA-Z]*Impl
+
+% #External modules of the audit microservice
+% module CtlrAnnotations:  org.springframework.web.bind.annotation.RequestMapping,  org.springframework.web.bind.annotation.RestController
+% module ExceptBC: br.com.inflexion.SpcInternalException
+% module MainAnnotations: org.springframework.boot.SpringApplication, org.springframework.boot.context.properties.EnableConfigurationProperties, org.springframework.boot.autoconfigure.SpringBootApplication, org.springframework.cloud.client.discovery.EnableDiscoveryClient
+% module Apache: org.apache.**
+% module ServiceAnnotation: org.springframework.stereotype.Service
+% module CBMultitenancy: br.com.basecommons.MultitenancyProperties
+% module JPA: javax.persistence.**
+% module Beans: org.springframework.context.**, org.springframework.beans.**
+% module Jndi: org.springframework.jndi.**
+
 \begin{lstlisting}[style=colorido, caption={\textcolor{blue}{Audit microservice's architectural design specification.}},label={list:especArquiteturalAudit}
 ]
-#Internal modules of the Audit microservice
-module Controller: br.com.microservices.audit.controller.*
-module Domain: br.com.microservices.audit.domain.*
-module Main: br.com.microservices.audit.AuditApplication
-module Service: br.com.microservices.audit.services.[a-zA-Z]*Impl
-
-#External modules of the audit microservice
-module CtlrAnnotations:  org.springframework.web.bind.annotation.RequestMapping,  org.springframework.web.bind.annotation.RestController
-module ExceptBC: br.com.inflexion.SpcInternalException
-module MainAnnotations: org.springframework.boot.SpringApplication, org.springframework.boot.context.properties.EnableConfigurationProperties, org.springframework.boot.autoconfigure.SpringBootApplication, org.springframework.cloud.client.discovery.EnableDiscoveryClient
-module Apache: org.apache.**
-module ServiceAnnotation: org.springframework.stereotype.Service
-module CBMultitenancy: br.com.basecommons.MultitenancyProperties
-module JPA: javax.persistence.**
-module Beans: org.springframework.context.**, org.springframework.beans.**
-module Jndi: org.springframework.jndi.**
-
 #Structural Design Constraints  SC's
 #Only-can		
 only Controller, Service can-depend Service	$\hspace{158pt}$"#Audit-SC1"
@@ -286,22 +252,14 @@ Service must-useannotation ServiceAnnotation $\hspace{154pt}$"#Audit-SC8"
 
 % \vspace{-0.04cm}
 %--------------------------------------------
+% % #Internal modules of the Authentication microservice
+% module Controller: br.com.microservices.authentication. controller.**
+% module Domain: br.com.microservices.authentication.domain.**
+% module Main: br.com.microservices.authentication.AuthenticationApplication
+% module Service:  br.com.microservices.authentication.service.**#External modules
+
 \begin{lstlisting}[style=colorido, caption={\textcolor{blue}{Authentication microservice's architectural design specification.}},label={list:especArquiteturalAuthentication}
 ]
-#Internal modules of the Authentication microservice
-module Controller: br.com.microservices.authentication. controller.**
-module Domain: br.com.microservices.authentication.domain.**
-module Main: br.com.microservices.authentication.AuthenticationApplication
-module Service:  br.com.microservices.authentication.service.**
-
-#External modules
-module BaseCommons:  br.com.basecommons.**
-module CtlrAnnotations: org.springframework.web.bind.annotation.RequestMapping, org.springframework.web.bind.annotation.RestController
-module MainAnnotations:  org.springframework.boot.SpringApplication, org.springframework.boot.context.properties.EnableConfigurationProperties, org.springframework.boot.autoconfigure.SpringBootApplication, org.springframework.cloud.client.discovery.EnableDiscoveryClient
-module MyBatis: br.com.basecommons.mybatis.**
-module PltDomain: br.com.plt.domain.**
-module ServiceAnnotation: org.springframework.stereotype.Service
-
 #Structural Design Constraints SC's
 #Only-can
 only Controller can-useannotation CtlrAnnotations $\hspace{98pt}$"#Authentication-SC1"
@@ -333,23 +291,23 @@ Main must-useannotation MainAnnotations	$\hspace{146pt}$"#Authentication-SC10"
 \noindent\textbf{\textcolor{blue}{Authorization microservice}}
 \label{sec:ApendiceAuthorization}
 %--------------------------------------------
+% % #Internal modules of the Authorization microservice
+% module Controller: br.com.microservices.authorization.controller.*
+% module Main: br.com.microservices.authorization.*
+% module ServiceInterface: br.com.microservices.authorization.services.[a-zA-Z]*Service
+% module ServiceImpl: br.com.microservices.authorization.services.[a-zA-Z]*Impl
+
+% #External modules
+% module Apache: org.apache.tomcat.**, org.apache.catalina.**, org.apache.logging.log4j.Logger
+% module BCMultitenancy: br.com.microservices. basecommons.multitenancy.**
+% module Beans: org.springframework.beans.**, org.springframework.context.**
+% module CtlrAnnotations: org.springframework.web.bind. annotation.RequestMapping, org.springframework.web.bind. annotation.RestController
+% module Jndi: org.springframework.jndi.**
+% module MainAnnotations: org.springframework.boot.context.properties.EnableConfigurationProperties, org.springframework.boot.autoconfigure.SpringBootApplication, org.springframework.cloud. client.discovery.EnableDiscoveryClient,  org.springframework.boot.SpringApplication
+% module ServiceAnnotation: org.springframework.stereotype.Service
+
 \begin{lstlisting}[style=colorido, caption={ \textcolor{blue}{Authorization microservice's architectural design specification.}},label={list:especArquiteturalAuthorization}
 ]
-#Internal modules of the Authorization microservice
-module Controller: br.com.microservices.authorization.controller.*
-module Main: br.com.microservices.authorization.*
-module ServiceInterface: br.com.microservices.authorization.services.[a-zA-Z]*Service
-module ServiceImpl: br.com.microservices.authorization.services.[a-zA-Z]*Impl
-
-#External modules
-module Apache: org.apache.tomcat.**, org.apache.catalina.**, org.apache.logging.log4j.Logger
-module BCMultitenancy: br.com.microservices. basecommons.multitenancy.**
-module Beans: org.springframework.beans.**, org.springframework.context.**
-module CtlrAnnotations: org.springframework.web.bind. annotation.RequestMapping, org.springframework.web.bind. annotation.RestController
-module Jndi: org.springframework.jndi.**
-module MainAnnotations: org.springframework.boot.context.properties.EnableConfigurationProperties, org.springframework.boot.autoconfigure.SpringBootApplication, org.springframework.cloud. client.discovery.EnableDiscoveryClient,  org.springframework.boot.SpringApplication
-module ServiceAnnotation: org.springframework.stereotype.Service
-
 #Structural Design Constraints SC's
 #Only-can
 only Controller, Service can-depend Service	$\hspace{129pt}$"#Authorization-SC1"
@@ -374,44 +332,43 @@ Controller must-useannotation CtlrAnnotations $\hspace{120pt}$"#Authorization-SC
 %--------------------------------------------
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.75\textwidth]{figuras/violacoesAuthorization.png}
-%\caption{Arquitetura de Microsserviços para o contexto de venda de produtos}
+\includegraphics[width=0.62\textwidth]{figuras/violacoesAuthorization.png}
 \caption{\textcolor{blue}{Authorization microservices's architectural design violations.}}
 \label{fig:microservices}
 \end{figure}
 %--------------------------------------------
 
-\newpage
+% \newpage
 \noindent\textbf{\textcolor{blue}{Conciliation Microservice}}
 \label{sec:ApendiceConciliation}
 
 %-------------------------------------------
+% % #Internal modules of the Conciliation microservice
+% module Controller: br.com.microservices.conciliation.controller.**
+% module DAO: br.com.microservices.conciliation.dao.**
+% module Domain: br.com.microservices.conciliation.domain.**
+% module ImplementDAO: br.com.microservices.conciliation.dao.[a-zA-Z]*DaoImpl
+% module Util: br.com.microservices.conciliation.util.**
+% module Main: br.com.microservices.conciliation.ConciliationApplication
+% module Service: br.com.microservices.conciliation.service.**
+% module Scheduled:  br.com.microservices.conciliation.scheduled.**
+
+% #External Modules
+% module AmazonSQS: com.amazonaws.services.sqs.AmazonSQS
+% module Beans: org.springframework.beans.**, org.springframework.stereotype.Component
+% module BCDAO: br.com.basecommons.daos.**
+% module BCDomain: br.com.basecommons.domain.*
+% module BCModel: br.com.basecommons.models.*
+% module BCMultitenancy: br.com.basecommons.multitenancy.**
+% module CtlrAnnotations: org.springframework.web.bind.annotation.RequestMapping, org.springframework.web.bind.annotation.RestController
+% module JPA: javax.persistence.**
+% module Logger: org.apache.logging.log4j.Logger
+% module MainAnnotations: org.springframework.boot.SpringApplication org.springframework.boot.context.properties.EnableConfigurationProperties, org.springframework.boot.autoconfigure.SpringBootApplication, org.springframework.cloud.client.discovery.EnableDiscoveryClient
+% module ServiceAnnotation: org.springframework.stereotype.Service
+% module SpringRepository: org.springframework.stereotype.Repository
+
 \begin{lstlisting}[style=colorido, caption={\textcolor{blue}{Conciliation microservice's architectural design specification.}},label={list:especArquiteturalConciliation}
 ]
-#Internal modules of the Conciliation microservice
-module Controller: br.com.microservices.conciliation.controller.**
-module DAO: br.com.microservices.conciliation.dao.**
-module Domain: br.com.microservices.conciliation.domain.**
-module ImplementDAO: br.com.microservices.conciliation.dao.[a-zA-Z]*DaoImpl
-module Util: br.com.microservices.conciliation.util.**
-module Main: br.com.microservices.conciliation.ConciliationApplication
-module Service: br.com.microservices.conciliation.service.**
-module Scheduled:  br.com.microservices.conciliation.scheduled.**
-
-#External Modules
-module AmazonSQS: com.amazonaws.services.sqs.AmazonSQS
-module Beans: org.springframework.beans.**, org.springframework.stereotype.Component
-module BCDAO: br.com.basecommons.daos.**
-module BCDomain: br.com.basecommons.domain.*
-module BCModel: br.com.basecommons.models.*
-module BCMultitenancy: br.com.basecommons.multitenancy.**
-module CtlrAnnotations: org.springframework.web.bind.annotation.RequestMapping, org.springframework.web.bind.annotation.RestController
-module JPA: javax.persistence.**
-module Logger: org.apache.logging.log4j.Logger
-module MainAnnotations: org.springframework.boot.SpringApplication org.springframework.boot.context.properties.EnableConfigurationProperties, org.springframework.boot.autoconfigure.SpringBootApplication, org.springframework.cloud.client.discovery.EnableDiscoveryClient
-module ServiceAnnotation: org.springframework.stereotype.Service
-module SpringRepository: org.springframework.stereotype.Repository
-
 #Structural Design Constraints SC's
 #Only-can
 only Controller can-useannotation CtlrAnnotations $\hspace{106pt}$"#Conciliation-SC1"
@@ -441,8 +398,8 @@ Service must-useannotation ServiceAnnotation $\hspace{131pt}$"#Conciliation-SC16
 %--------------------------------------------
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.75\textwidth]{figuras/violacoesConciliation.png}
-%\caption{Arquitetura de Microsserviços para o contexto de venda de produtos}
+\includegraphics[width=0.7\textwidth]{figuras/violacoesConciliation.png}
+\vspace{-0.3cm}
 \caption{\textcolor{blue}{Conciliation microservices's architectural design violations.}}
 \label{fig:microservices}
 \end{figure}
@@ -451,26 +408,25 @@ Service must-useannotation ServiceAnnotation $\hspace{131pt}$"#Conciliation-SC16
 \newpage
 \noindent\textbf{\large{\textcolor{blue}{Dashboard}}}
 \label{sec:ApendiceDashboard}
+\vspace{-0.3cm}
+% %--------------------------------------------
+% module Controller: br.com.microservices.dashboard.controller.*
+% module DAO: br.com.microservices.dashboard.dao.**
+% module DAOInterface: br.com.microservices.dashboard.dao.[a-zA-Z]*Dao
+% module Service: br.com.microservices.dashboard.service.*
 
+% #External Modules
+% module BCController: br.com.basecommons.controller.**
+% module BCModel: br.com.basecommons.models.**
+% module CtlrAnnotations: org.springframework.web.bind.annotation.RequestMapping, org.springframework.web.bind. annotation.RestController
+% module Hibernate: org.hibernate.**
+% module MainAnnotations: org.springframework.boot.context.properties.EnableConfigurationProperties, org.springframework.boot.autoconfigure.SpringBootApplication, org.springframework.cloud.client.discovery.EnableDiscoveryClient, org.springframework.boot.SpringApplication
+% module ServiceAnnotation: org.springframework.stereotype.Service
+% module SpringRepository: org.springframework.stereotype.Repository
 
-%--------------------------------------------
 \vspace{0.2cm}
 \begin{lstlisting}[style=colorido, caption={\textcolor{blue}{Dashboard microservice's architectural design specification.}},label={list:especArquiteturalDashboard}
 ]
-module Controller: br.com.microservices.dashboard.controller.*
-module DAO: br.com.microservices.dashboard.dao.**
-module DAOInterface: br.com.microservices.dashboard.dao.[a-zA-Z]*Dao
-module Service: br.com.microservices.dashboard.service.*
-
-#External Modules
-module BCController: br.com.basecommons.controller.**
-module BCModel: br.com.basecommons.models.**
-module CtlrAnnotations: org.springframework.web.bind.annotation.RequestMapping, org.springframework.web.bind. annotation.RestController
-module Hibernate: org.hibernate.**
-module MainAnnotations: org.springframework.boot.context.properties.EnableConfigurationProperties, org.springframework.boot.autoconfigure.SpringBootApplication, org.springframework.cloud.client.discovery.EnableDiscoveryClient, org.springframework.boot.SpringApplication
-module ServiceAnnotation: org.springframework.stereotype.Service
-module SpringRepository: org.springframework.stereotype.Repository
-
 #Structural Design Constraints SC's
 #Only-can
 only Controller can-useannotation CtlrAnnotations $\hspace{111pt}$"#Dashboard-SC1"
@@ -507,32 +463,31 @@ Service must-useannotation ServiceAnnotation $\hspace{134pt}$"#Dashboard-SC12"
 % \newpage
 \noindent\textbf{\large{\textcolor{blue}{Entries microservice}}}
 \label{sec:ApendiceEntries}
-
-
+\vspace{-0.3cm}
 %--------------------------------------------
+% % #Internal modules of the Entries microservice
+% module Util: br.com.microservices.entries.utils.*
+% module Controller:  br.com.microservices.entries.controller.*
+% module DAO: br.com.microservices.entries.dao.*
+% module ImplementDAO: br.com.microservices.entries.dao. [a-zA-Z]*DaoImpl
+% module Main: br.com.microservices.entries.EntriesApplication
+% module Model: br.com.microservices.entries.model.**, br.com.microservices.entries.model.**, br.com.microservices.entries.models.**
+% module Service: br.com.microservices.entries.service.**
+% module ServiceImplement: br.com.microservices.entries.service.*[a-zA-Z]*ServiceImpl
+% module Serializer: br.com.microservices.entries.serializer.*
+
+% #External Modules
+% module BCMultitenancy: br.com.basecommons.multitenancy.**	
+% module CtlrAnnotations: org.springframework.web.bind. annotation.RequestMapping, org.springframework.web.bind. annotation.RestController
+% module Hibernate: org.hibernate.**
+% module JPA: javax.persistence.**
+% module MainAnnotations: org.springframework.boot.SpringApplication org.springframework.boot.context.properties.EnableConfigurationProperties, org.springframework.boot.autoconfigure.SpringBootApplication, org.springframework.cloud.client.discovery.EnableDiscoveryClient
+% module Serializable: java.io.Serializable
+% module ServiceAnnotation: org.springframework.stereotype.Service	
+% module SpringRepository: org.springframework.stereotype.Repository
+
 \begin{lstlisting}[style=colorido, caption={ \textcolor{blue}{Entries microservice's architectural design specification.}},label={list:especArquiteturalEntries}
 ]
- #Internal modules of the Entries microservice
-module Util: br.com.microservices.entries.utils.*
-module Controller:  br.com.microservices.entries.controller.*
-module DAO: br.com.microservices.entries.dao.*
-module ImplementDAO: br.com.microservices.entries.dao. [a-zA-Z]*DaoImpl
-module Main: br.com.microservices.entries.EntriesApplication
-module Model: br.com.microservices.entries.model.**, br.com.microservices.entries.model.**, br.com.microservices.entries.models.**
-module Service: br.com.microservices.entries.service.**
-module ServiceImplement: br.com.microservices.entries.service.*[a-zA-Z]*ServiceImpl
-module Serializer: br.com.microservices.entries.serializer.*
-
-#External Modules
-module BCMultitenancy: br.com.basecommons.multitenancy.**	
-module CtlrAnnotations: org.springframework.web.bind. annotation.RequestMapping, org.springframework.web.bind. annotation.RestController
-module Hibernate: org.hibernate.**
-module JPA: javax.persistence.**
-module MainAnnotations: org.springframework.boot.SpringApplication org.springframework.boot.context.properties.EnableConfigurationProperties, org.springframework.boot.autoconfigure.SpringBootApplication, org.springframework.cloud.client.discovery.EnableDiscoveryClient
-module Serializable: java.io.Serializable
-module ServiceAnnotation: org.springframework.stereotype.Service	
-module SpringRepository: org.springframework.stereotype.Repository
-
 #Structural Design Constraints SC's
 #Only-can 
 only Controller can-useannotation CtlrAnnotations $\hspace{123pt}$"#Entries-SC1"
@@ -560,44 +515,44 @@ ImplementDAO must-implement SpringRepository $\hspace{147pt}$"#Entries-SC12"
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.7\textwidth]{figuras/violacoesEntries.png}
-%\caption{Arquitetura de Microsserviços para o contexto de venda de produtos}
+\vspace{-0.2cm}
 \caption{\textcolor{blue}{Entries microservices's architectural design violations.}}
 \label{fig:microservices}
 \end{figure}
 %--------------------------------------------
 
 
-\newpage
+% \newpage
 \noindent\textbf{\large{\textcolor{blue}{FileLoad microservice}}}
 \label{sec:ApendiceFileLoad}
 
 
 %--------------------------------------------
+% #Internal modules of the  FileLoad microservice
+% module DAO: br.com.microservices.fileload.daos.*
+% module DAOInterface: br.com.microservices.fileload.daos.[a-zA-Z]*Dao
+% module ImplementDAO: br.com.microservices.fileload.daos.[a-zA-Z]*DaoImpl
+% module Main: br.com.microservices.fileload.*
+% module Model: br.com.microservices.fileload.models.**
+% module Service: br.com.microservices.fileload.services.*
+
+% #External Modules
+% module BCDAO: br.com.basecommons.daos.**
+% module BCModel: br.com.basecommons.basecommons.models.*
+% module BCMultitenancy: br.com.basecommons.multitenancy.**
+% module Beans: javax.validation.**
+% module DataSource: org.springframework.boot.autoconfigure.
+% jdbc.DataSourceAutoConfiguration
+% module Hibernate: org.hibernate.**
+% module JPA: javax.persistence.**
+% module MainAnnotations: org.springframework.boot.SpringApplication, 
+% org.springframework.boot.context.properties.EnableConfigurationProperties, org.springframework.boot.autoconfigure.SpringBootApplication, org.springframework.cloud.client.discovery.EnableDiscoveryClient
+% module Serializable: java.io.Serializable
+% module ServiceAnnotation: org.springframework.stereotype.Service
+% module SpringRepository: org.springframework.stereotype.Repository
+
 \begin{lstlisting}[style=colorido, caption={\textcolor{blue}{FileLoad microservice's architectural design specification.}},label={list:especArquiteturalFileLoad}
 ]
-#Internal modules of the  FileLoad microservice
-module DAO: br.com.microservices.fileload.daos.*
-module DAOInterface: br.com.microservices.fileload.daos.[a-zA-Z]*Dao
-module ImplementDAO: br.com.microservices.fileload.daos.[a-zA-Z]*DaoImpl
-module Main: br.com.microservices.fileload.*
-module Model: br.com.microservices.fileload.models.**
-module Service: br.com.microservices.fileload.services.*
-
-#External Modules
-module BCDAO: br.com.basecommons.daos.**
-module BCModel: br.com.basecommons.basecommons.models.*
-module BCMultitenancy: br.com.basecommons.multitenancy.**
-module Beans: javax.validation.**
-module DataSource: org.springframework.boot.autoconfigure.
-jdbc.DataSourceAutoConfiguration
-module Hibernate: org.hibernate.**
-module JPA: javax.persistence.**
-module MainAnnotations: org.springframework.boot.SpringApplication, 
-org.springframework.boot.context.properties.EnableConfigurationProperties, org.springframework.boot.autoconfigure.SpringBootApplication, org.springframework.cloud.client.discovery.EnableDiscoveryClient
-module Serializable: java.io.Serializable
-module ServiceAnnotation: org.springframework.stereotype.Service
-module SpringRepository: org.springframework.stereotype.Repository
-
 #Structural Design Constraints SC's
 #Only-can 
 only Model, DAO can-depend JPA, Beans $\hspace{175pt}$"#FileLoad-SC1"
@@ -629,39 +584,39 @@ Service must-useannotation ServiceAnnotation $\hspace{142pt}$"#FileLoad-SC11"
 \end{figure}
 %--------------------------------------------
 
-% \newpage
+\newpage
 \noindent\textbf{\large{\textcolor{blue}{FileProcess microservice}}}
 \label{sec:ApendiceFileProccess}
 
 
 %--------------------------------------------
+% % #Internal modules of the FileProcess microservice
+% module DAO: br.com.microservices.process.dao.**
+% module DAOInterface: br.com.microservices. process.dao.[a-zA-Z]*Dao
+% module ImplementDAO: br.com.microservices. process.dao.[a-zA-Z]*DaoImpl
+% module Main: br.com.microservices.process.Application
+% module Model: br.com.microservices.model.**
+% module Scheduling: br.com.microservices.schedule.**
+% module Service: br.com.microservices.service.**
+% module Util: br.com.microservices.process.util.**
+
+% #External Modules
+% module AmazonService: com.amazonaws.services.**
+% module BCDomain: equals.gestaofinanceira.microservices.cba. basecommons.domain.**
+% module BCUtil: br.com.basecommons.utils.**
+% module BCMultitenancy: br.com.basecommons.multitenancy.**
+% module JPA: javax.persistence.**
+% module Logger: org.apache.logging.log4j.Logger
+% module MainAnnotations: org.springframework.boot.SpringApplication, org.springframework.boot.context.properties.EnableConfigurationProperties, org.springframework.boot.autoconfigure.SpringBootApplication, org.springframework.cloud.client.discovery.EnableDiscoveryClient
+% module ScdAnnotation: org.springframework.scheduling. annotation.EnableScheduling
+% module ScdFramework: org.springframework.scheduling.**
+% module Serializable: java.io.Serializable
+% module ServiceAnnotation: org.springframework.stereotype.Service
+% module SpringBeans: org.springframework.beans.**
+% module SpringRepository: org.springframework.stereotype.Repository
+
 \begin{lstlisting}[style=colorido, caption={\textcolor{blue}{FileProcess microservice's architectural design specification.}},label={list:especArquiteturalFileProccess}
 ]
-#Internal modules of the FileProcess microservice
-module DAO: br.com.microservices.process.dao.**
-module DAOInterface: br.com.microservices. process.dao.[a-zA-Z]*Dao
-module ImplementDAO: br.com.microservices. process.dao.[a-zA-Z]*DaoImpl
-module Main: br.com.microservices.process.Application
-module Model: br.com.microservices.model.**
-module Scheduling: br.com.microservices.schedule.**
-module Service: br.com.microservices.service.**
-module Util: br.com.microservices.process.util.**
-
-#External Modules
-module AmazonService: com.amazonaws.services.**
-module BCDomain: equals.gestaofinanceira.microservices.cba. basecommons.domain.**
-module BCUtil: br.com.basecommons.utils.**
-module BCMultitenancy: br.com.basecommons.multitenancy.**
-module JPA: javax.persistence.**
-module Logger: org.apache.logging.log4j.Logger
-module MainAnnotations: org.springframework.boot.SpringApplication, org.springframework.boot.context.properties.EnableConfigurationProperties, org.springframework.boot.autoconfigure.SpringBootApplication, org.springframework.cloud.client.discovery.EnableDiscoveryClient
-module ScdAnnotation: org.springframework.scheduling. annotation.EnableScheduling
-module ScdFramework: org.springframework.scheduling.**
-module Serializable: java.io.Serializable
-module ServiceAnnotation: org.springframework.stereotype.Service
-module SpringBeans: org.springframework.beans.**
-module SpringRepository: org.springframework.stereotype.Repository
-
 #Structural Design Constraints SC's
 #Only-can
 only Main can-useannotation MainAnnotations	$\hspace{136pt}$"#FileProcess-SC1"
@@ -701,22 +656,23 @@ Scheduling must-useannotation ScdAnnotation $\hspace{136pt}$"#FileProcess-SC13"
 \label{sec:ApendiceReports}
 
 %--------------------------------------------
+% % 
+% #Internal modules of the Reports microservice
+% module Controller: br.com.microservices.reports.controller.**
+% module Main: br.com.microservices.reports.ReportsApplication
+% module Serializer: br.com.microservices.reports.serializer.**
+% module Service: br.com.microservices.reports.service.**
+
+% #External Modules
+% module BCController: br.com.basecommons.controller.BaseController
+% module BCMultitenancy: br.com.basecommons.basecommons.multitenancy.properties.MultitenancyProperties
+% module CtlrAnnotations: org.springframework.web.bind.annotation.RequestMapping, org.springframework.web.bind.annotation.RestController, ControllerAnnotations.**
+% module JSONSerializer: flexjson.JSONSerializer.*
+% module MainAnnotations: org.springframework.boot.SpringApplication,  org.springframework.boot.context.properties.EnableConfigurationProperties, org.springframework.boot.autoconfigure.SpringBootApplication, org.springframework.cloud.client.discovery.EnableDiscoveryClient
+% module ServiceAnnotation: org.springframework.stereotype.Service
+
 \begin{lstlisting}[style=colorido,caption={\textcolor{blue}{Reports microservice's architectural design specification.}},label={list:especArquiteturalReports}
 ]
-#Internal modules of the Reports microservice
-module Controller: br.com.microservices.reports.controller.**
-module Main: br.com.microservices.reports.ReportsApplication
-module Serializer: br.com.microservices.reports.serializer.**
-module Service: br.com.microservices.reports.service.**
-
-#External Modules
-module BCController: br.com.basecommons.controller.BaseController
-module BCMultitenancy: br.com.basecommons.basecommons.multitenancy.properties.MultitenancyProperties
-module CtlrAnnotations: org.springframework.web.bind.annotation.RequestMapping, org.springframework.web.bind.annotation.RestController, ControllerAnnotations.**
-module JSONSerializer: flexjson.JSONSerializer.*
-module MainAnnotations: org.springframework.boot.SpringApplication,  org.springframework.boot.context.properties.EnableConfigurationProperties, org.springframework.boot.autoconfigure.SpringBootApplication, org.springframework.cloud.client.discovery.EnableDiscoveryClient
-module ServiceAnnotation: org.springframework.stereotype.Service
-
 #Structural Design Constraints SC's
 #Only-can
 only Controller can-useannotation CtlrAnnotations $\hspace{120pt}$"#Reports-SC1"
@@ -749,27 +705,27 @@ Serializer must-depend JSONSerializer	$\hspace{178pt}$"#Reports-SC9"@*@
 \label{sec:ApendiceSummary}
 
 %--------------------------------------------
+% % #Internal modules of the Summary microservice
+% module BaseService:  br.com.microservices.summary.service.BaseService
+% module Controller:  br.com.microservices.summary.controller.*
+% module DAO: br.com.microservices.summary.dao.*
+% module DAOInterface: br.com.microservices.summary.dao.[a-zA-Z]*Dao
+% module ImplementDAO: br.com.microservices.summary.dao.[a-zA-Z]*Impl
+% module Main: br.com.microservices.summary.SummaryApplication
+% module Service: br.com.microservices.summary.service.*
+% module ServiceSubClass: br.com.microservices.summary.service.AtributoService, br.com.microservices.summary.service.ConciliacaoService, br.com.microservices.summary.service.TreegridService
+% module Stream: br.com.microservices.summary.stream.*
+% module Util: br.com.microservices.summary.util.**
+
+% #External Modules
+% module BCMultitenancy: br.com.basecommons.multitenacy.**
+% module CtlrAnnotations: org.springframework.web.bind.annotation.RequestMapping, org.springframework.web.bind. annotation.RestController
+% module MainAnnotations:  org.springframework.boot.SpringApplication, org.springframework.boot.context.properties.EnableConfigurationProperties, org.springframework.boot.autoconfigure.SpringBootApplication, org.springframework.cloud.client.discovery.EnableDiscoveryClient
+% module Repository: org.springframework.stereotype.Repository
+% module ServiceAnnotation: org.springframework.stereotype.Service
+
 \begin{lstlisting}[style=colorido, caption={\textcolor{blue}{Summary microservice's architectural design specification.}},label={list:especArquiteturalSummary}
 ]
-#Internal modules of the Summary microservice
-module BaseService:  br.com.microservices.summary.service.BaseService
-module Controller:  br.com.microservices.summary.controller.*
-module DAO: br.com.microservices.summary.dao.*
-module DAOInterface: br.com.microservices.summary.dao.[a-zA-Z]*Dao
-module ImplementDAO: br.com.microservices.summary.dao.[a-zA-Z]*Impl
-module Main: br.com.microservices.summary.SummaryApplication
-module Service: br.com.microservices.summary.service.*
-module ServiceSubClass: br.com.microservices.summary.service.AtributoService, br.com.microservices.summary.service.ConciliacaoService, br.com.microservices.summary.service.TreegridService
-module Stream: br.com.microservices.summary.stream.*
-module Util: br.com.microservices.summary.util.**
-
-#External Modules
-module BCMultitenancy: br.com.basecommons.multitenacy.**
-module CtlrAnnotations: org.springframework.web.bind.annotation.RequestMapping, org.springframework.web.bind. annotation.RestController
-module MainAnnotations:  org.springframework.boot.SpringApplication, org.springframework.boot.context.properties.EnableConfigurationProperties, org.springframework.boot.autoconfigure.SpringBootApplication, org.springframework.cloud.client.discovery.EnableDiscoveryClient
-module Repository: org.springframework.stereotype.Repository
-module ServiceAnnotation: org.springframework.stereotype.Service
-
 #Structural Design Constraints SC's
 #Only-can
 only Service can-useannotation ServiceAnnotation $\hspace{118pt}$"#Summary-SC1" 
